@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding = "UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0
+Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-
+transitional.dtd">
+<html xmlns = "http://www.w3.org/1999/xhtml">
+
+
+<p id="notice"><%= notice %></p>
+
+<head>
+<link rel="stylesheet" type="text/css" src="http:// ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css">
+<script type"text/Javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"> </script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+<script>
+$(document).ready(function(){
+ $("#button").click(function(){
+  $.ajax({
+      url:"http://lyrics.wikia.com/api.php?func=getSong&artist=Bob_Marley&song=Small_Axe&fmt=realjson&callback=?",
+      data: 'get',
+      dataType: 'jsonp',
+      success: function(data) {
+          $("#lyrics").html("<h1>"+data.artist+"</h1>"+"<p>"+data.lyrics+"</p>");
+      }
+    });
+  });
+}); 
+</script>
+</head>
+
+<body>
+
+<div class="compdetail grid_4">
+<div class="whiteback">
+<h1>
+  <%= @music.Title %>
+</h1>
+</div>
+<div class="therest">
+
+<p>
+  <strong>Theme:</strong>
+  <%= @music.Theme %>
+</p>
+
+
+<p>
+  <strong>Artist:</strong>
+  <%= @music.Artist %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @music.Year %>
+</p>
+
+<p>
+  <strong><a href="<%= @music.Spotify_url %>"> Spotify link </a></strong>
+</p>
+
+<p>
+<button id="button">Lyrics</button>
+</p>
+<div id="lyrics">sss</div>
+
+<%= link_to 'Edit', edit_music_path(@music) %> |
+<%= link_to 'Back', musics_path %>

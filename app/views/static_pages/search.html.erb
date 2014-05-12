@@ -1,0 +1,21 @@
+<% if @musics.size == 0 %>
+  <%= @status %>
+<% else %>
+<table>
+  <thead style="text-align: left;">
+    <tr>
+      <th>Name</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @musics.each do |Music| %>
+      <tr>
+        <td style="font-size: 11px;"><%= link_to Music.Theme, Music %></td>
+<!--         <td><%= finance.sector %></td>
+        <td><%= finance.location %></td> -->
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% end %>

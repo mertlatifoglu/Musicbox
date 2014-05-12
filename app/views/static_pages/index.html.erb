@@ -1,0 +1,73 @@
+<% provide(:title, 'Home') %>
+<script>
+  function loadXMLDoc()
+  {
+  var xmlhttp;
+  if (window.XMLHttpRequest)
+    {// code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+    }
+  else
+    {// code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+  xmlhttp.onreadystatechange=function()
+    {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200)
+      {
+      document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+      }
+    }
+  var str = $( "form" ).serialize();
+  xmlhttp.open("GET","select.html?"+str,true);
+  xmlhttp.send();
+  }
+  </script>
+
+  <div class="sidebar grid_4">
+  <div class="whiteback"><h1>Listing Songs</h1></div>
+  <div class="therest"><form>
+    <p><strong>Please select the Theme you want to hear</strong></p>
+    <label for="Theme">Theme: </label><br/>
+    <!-- <div class="select-style"> -->
+    <select id="Theme" name="Theme" onchange="loadXMLDoc()">
+      <option value="all">All</option>
+      <option value="Love">Love</option>
+      <option value="Heartbreak">Heartbreak</option>
+      <option value="People and places">People and places</option>
+      <option value="Sex">Sex</option>
+      <option value="Politics and protest">Politics and protest</option>
+      <option value="Life and death">Life and death</option>
+      <option value="Party songs">Party songs</option>
+    </select><br/>
+    </form>
+    <button class="button-style" type="button" onclick="loadXMLDoc()">Click me</button>
+    </div>
+</div>
+<div id="myDiv" class="grid_8">
+  <div class="whiteback">
+  <h1>Welcome!</h1>
+  </div>
+  <div class="therest">
+  <p>In this application you can search for 1000 legendary songs that everyone should listen in their life<br>
+   A Spotify url is used for most of the songs. However, some very old songs haven't got the url</p>
+  <p>Guest can only view the list while registered users have access to the other details of the songs, Register Now!</p>
+  </div>
+</div>
+<div class="about grid_4">
+  <div class="therest">
+    <div class="fb-like" data-href="http://www.abdn.ac.uk" data-layout="button" data-action="like" data-show-faces="false" data-share="true"></div>
+    <div class="tweet"><a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-count="none">Tweet</a></div>
+    <div class="gplus"><div class="g-plusone" data-size="tall" data-annotation="none"></div></div>
+    <script type="text/javascript">
+      window.___gcfg = {lang: 'en-GB'};
+
+      (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/platform.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })();
+    </script>
+    <br/>
+  </div>
+</div>
